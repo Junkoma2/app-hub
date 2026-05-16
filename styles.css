@@ -6,8 +6,8 @@
     "Noto Sans JP",
     system-ui,
     sans-serif;
-  background: #fff;
-  color: #111;
+  background: #f7f8fa;
+  color: #1f2937;
 }
 
 * {
@@ -21,69 +21,101 @@ body {
 
 body {
   margin: 0;
-  background: #fff;
+  background: #f7f8fa;
 }
 
-.page {
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 20px;
-}
-
-h1 {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 1.4;
-  letter-spacing: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: underline;
-}
-
-.projects-link {
-  font-size: 14px;
-  line-height: 1.4;
-}
-
+.home-page,
 .projects-page {
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding: 20px;
+  gap: 28px;
+  width: min(100%, 720px);
+  margin: 0 auto;
+  padding: 40px 20px;
 }
 
-.projects-page h1 {
-  font-size: 20px;
+h1 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0;
 }
 
+h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+p {
+  margin: 8px 0 0;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.projects-link {
+  width: fit-content;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.featured-projects,
 .projects-list {
-  display: grid;
-  gap: 16px;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.project-link {
+.project-card {
   display: grid;
   gap: 4px;
+  width: 100%;
+  max-width: 420px;
+  padding: 18px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  text-decoration: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.project-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+  transform: translateY(-1px);
+}
+
+.project-copy {
+  display: grid;
+  gap: 2px;
 }
 
 .project-name {
   font-size: 16px;
+  font-weight: 600;
   line-height: 1.4;
+  color: #111827;
 }
 
 .project-note {
   font-size: 14px;
   line-height: 1.5;
+  color: #6b7280;
 }
 
 .back-link {
+  width: fit-content;
   font-size: 14px;
+  font-weight: 600;
   line-height: 1.4;
 }

@@ -3,13 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>まるで水風呂</title>
+    <title>作ったものおきば</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <main class="page">
-      <h1>まるで水風呂</h1>
-      <a class="projects-link" href="./projects.html">projects</a>
+    <main class="home-page">
+      <section class="intro">
+        <h1>作ったものおきば</h1>
+        <p>作ったアプリをまとめています。</p>
+      </section>
+
+      <section class="featured-projects" aria-label="作ったアプリ">
+        <h2>apps</h2>
+        <a
+          class="project-card"
+          href="https://junkoma2.github.io/habit-tracker/"
+        >
+          <span class="project-name">habit tracker</span>
+          <span class="project-note">habit management app</span>
+        </a>
+        <a
+          class="project-card"
+          href="https://junkoma2.github.io/task-manager/"
+        >
+          <span class="project-name">task manager</span>
+          <span class="project-note">task management app</span>
+        </a>
+      </section>
+
+      <a class="projects-link" href="./projects.html">all apps</a>
     </main>
   </body>
 </html>

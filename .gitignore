@@ -1,2 +1,16 @@
-.env
+node_modules/
+dist/
 .DS_Store
+
+.env
+.env.*
+
+.claude/
+.codex/
+.cursor/
+.windsurf/
+
+CLAUDE.md
+CODEX.md
+AGENTS.md
+GEMINI.md
