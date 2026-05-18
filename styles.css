@@ -100,6 +100,10 @@ a {
   object-fit: contain;
 }
 
+.project-icon--placeholder {
+  background: #e5e7eb;
+}
+
 .project-card:hover {
   border-color: #cbd5e1;
   box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
