@@ -106,6 +106,23 @@ a {
   transform: translateY(-1px);
 }
 
+.project-card--wip {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.project-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 500;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+
 .project-copy {
   display: grid;
   gap: 2px;
