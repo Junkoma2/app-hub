@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#F59E0B"/>
+  <!-- 2x2グリッド（ハブ） -->
+  <rect x="116" y="116" width="120" height="120" rx="20" fill="white" opacity="0.9"/>
+  <rect x="276" y="116" width="120" height="120" rx="20" fill="white" opacity="0.7"/>
+  <rect x="116" y="276" width="120" height="120" rx="20" fill="white" opacity="0.7"/>
+  <rect x="276" y="276" width="120" height="120" rx="20" fill="white" opacity="0.5"/>
+  <!-- 中心の接続点 -->
+  <circle cx="256" cy="256" r="18" fill="#F59E0B"/>
+  <circle cx="256" cy="256" r="10" fill="white"/>
+</svg>

@@ -1,0 +1,19 @@
+{
+  "name": "アプリハブ",
+  "short_name": "hub",
+  "description": "作ったアプリへの入口",
+  "theme_color": "#F59E0B",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/app-hub/",
+  "start_url": "/app-hub/",
+  "icons": [
+    {
+      "src": "/app-hub/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
