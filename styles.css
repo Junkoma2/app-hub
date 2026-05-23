@@ -153,3 +153,19 @@ a {
   font-weight: 600;
   line-height: 1.4;
 }
+
+/* #18: focus-visible スタイル */
+:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* #17: iOS セーフエリア対応 */
+.home-page,
+.projects-page {
+  padding-top: max(40px, env(safe-area-inset-top));
+  padding-bottom: max(40px, env(safe-area-inset-bottom));
+  padding-left: max(20px, env(safe-area-inset-left));
+  padding-right: max(20px, env(safe-area-inset-right));
+}
