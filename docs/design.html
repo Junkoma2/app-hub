@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>app-hub 設計ドキュメント</title>
+  <style>
+    :root {
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", system-ui, sans-serif;
+      color: #1f2937;
+      background: #f7f8fa;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      background: #f7f8fa;
+    }
+    .doc-shell {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 0 0 8px;
+      color: #1f2937;
+      letter-spacing: 0;
+    }
+    .doc-subtitle {
+      font-size: 14px;
+      color: #6b7280;
+      margin: 0 0 40px;
+      line-height: 1.6;
+    }
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #2563eb;
+      color: #1f2937;
+    }
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin: 20px 0 8px;
+      color: #1d4ed8;
+    }
+    p {
+      line-height: 1.8;
+      margin: 8px 0;
+      color: #374151;
+    }
+    ul, ol {
+      padding-left: 1.5em;
+      margin: 8px 0;
+      line-height: 1.8;
+      color: #374151;
+    }
+    code {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 0.85em;
+      background: #e0e7ff;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #1e3a8a;
+    }
+    pre {
+      background: #1f2937;
+      color: #e5e7eb;
+      padding: 20px;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-size: 13px;
+      line-height: 1.6;
+      margin: 12px 0;
+    }
+    pre code {
+      background: none;
+      padding: 0;
+      color: inherit;
+      font-size: inherit;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 14px;
+    }
+    th {
+      background: #e0e7ff;
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 600;
+      color: #1f2937;
+    }
+    td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #e5e7eb;
+      color: #374151;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #eff6ff; }
+    .section-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0;
+    }
+    .tag {
+      background: #dbeafe;
+      color: #1d4ed8;
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .tag.no {
+      background: #fee2e2;
+      color: #b91c1c;
+    }
+    .tag.avoid {
+      background: #fef9c3;
+      color: #92400e;
+    }
+    .step-list {
+      counter-reset: step;
+      list-style: none;
+      padding: 0;
+      margin: 12px 0;
+    }
+    .step-list li {
+      counter-increment: step;
+      padding: 8px 0 8px 36px;
+      position: relative;
+      border-bottom: 1px solid #f3f4f6;
+      color: #374151;
+      line-height: 1.6;
+    }
+    .step-list li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 24px;
+      height: 24px;
+      background: #2563eb;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .step-list li:last-child { border-bottom: none; }
+  </style>
+</head>
+<body>
+  <div class="doc-shell">
+    <h1>app-hub 設計ドキュメント</h1>
+    <p class="doc-subtitle">app-hub の設計思想・アーキテクチャ・更新手順・拡張方針</p>
+
+    <div class="section-card">
+      <h2>設計思想</h2>
+      <p><strong>作ったものを静かに置いておける入口。</strong> 説明しすぎず、装飾しすぎず、見れば分かる構成を優先する。アプリ一覧ページとして、作品より先に装飾が目立つことを避ける。</p>
+      <h3>判断基準</h3>
+      <ul>
+        <li>作品より先に装飾が目立っていないか</li>
+        <li>迷わず一覧へ進めるか</li>
+        <li>一度見たあとも、また開きやすいか</li>
+        <li>少し整っているが、語りすぎていないか</li>
+      </ul>
+      <h3>避けるもの</h3>
+      <div class="tag-list">
+        <span class="tag avoid">ポートフォリオらしさの押し出し</span>
+        <span class="tag avoid">過度なコピー文</span>
+        <span class="tag avoid">装飾のための装飾</span>
+        <span class="tag avoid">作品一覧より目立つ自己演出</span>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2>アーキテクチャ概要</h2>
+      <p><code>index.html</code> / <code>styles.css</code> がエントリポイント。JavaScriptなし、ビルドステップなし。デプロイは <code>docs/</code> フォルダを GitHub Pages のソースとして公開。<code>main</code> への push で即時反映。</p>
+      <pre><code>app-hub/
+├── index.html          # トップページ（注目アプリ + all appsリンク）
+├── projects.html       # 全アプリ一覧ページ
+├── styles.css          # スタイル
+├── manifest.webmanifest
+├── icon.svg
+└── docs/
+    ├── product-principles.md
+    └── design.html     # このファイル</code></pre>
+      <h3>ページ構成</h3>
+      <ul>
+        <li><code>index.html</code> — トップページ。注目アプリを数件表示し、<code>projects.html</code> へのリンクを置く</li>
+        <li><code>projects.html</code> — 全アプリの一覧</li>
+      </ul>
+      <h3>アプリカードの構造</h3>
+      <pre><code>&lt;a class="project-card" href="[アプリURL]"&gt;
+  &lt;img class="project-icon" src="[アイコンURL]" alt="" width="48" height="48" /&gt;
+  &lt;span class="project-copy"&gt;
+    &lt;span class="project-name"&gt;[アプリ名]&lt;/span&gt;
+    &lt;span class="project-note"&gt;[1行の説明]&lt;/span&gt;
+  &lt;/span&gt;
+&lt;/a&gt;</code></pre>
+      <p>アイコン画像は各アプリのリポジトリから直接参照する（<code>https://junkoma2.github.io/[app-name]/icon.svg</code>）。</p>
+    </div>
+
+    <div class="section-card">
+      <h2>更新手順</h2>
+      <h3>アプリを追加するとき</h3>
+      <ol class="step-list">
+        <li><code>index.html</code> のアプリカード一覧に追加</li>
+        <li><code>projects.html</code> のアプリカード一覧に追加</li>
+        <li><code>README.md</code> の公開アプリ一覧テーブルを更新</li>
+        <li><code>docs/</code> フォルダにも同じ変更を反映（GitHub Pages ソース）</li>
+      </ol>
+    </div>
+
+    <div class="section-card">
+      <h2>今後の拡張方針・やらないこと</h2>
+      <h3>やってよいこと</h3>
+      <div class="tag-list">
+        <span class="tag">アプリの追加に伴うカードの追加</span>
+        <span class="tag">軽微なスタイル調整</span>
+      </div>
+      <h3>やらないこと</h3>
+      <div class="tag-list">
+        <span class="tag no">JavaScriptによる動的な機能追加</span>
+        <span class="tag no">ブログ・自己紹介などのコンテンツ拡充</span>
+        <span class="tag no">アプリ説明の長文化</span>
+        <span class="tag no">SEO目的のメタデータ過剰追加</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
