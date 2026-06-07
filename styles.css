@@ -240,3 +240,10 @@ a {
 .about-footer {
   margin-top: auto;
 }
+
+.app-version {
+  margin: 20px 0 0;
+  color: #9ca3af;
+  font-size: 12px;
+  text-align: center;
+}
